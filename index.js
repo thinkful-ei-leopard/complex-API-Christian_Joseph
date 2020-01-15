@@ -16,23 +16,24 @@ function displayResults(responseJson) {
   console.log(responseJson);
   $('#results-list').empty();
   // iterate through the items array
-  for (let i = 0; i < responseJson.items.length; i++){
-    // x
+  for (let i = 0; i < responseJson.data.length; i++){
+    // 
     $('#results-list').append(
-      `<li><h3>${responseJson.items[i].snippet.title}</h3>
-      <p>${responseJson.items[i].snippet.description}</p>
-      <img src='${responseJson.items[i].snippet.thumbnails.default.url}'>
+      `<li><h3>${responseJson.data[i].fullName}</h3>
+      <p>${responseJson.data[i].description}</p>
+      <a href='${responseJson.data[i].url}'>${responseJson.data[i].fullName}</a>
+      <h4>${responseJson.data[i].description.type}</h4>
       </li>`
     )}
   //display the results section  
   $('#results').removeClass('hidden');
 }
 
-function getNationalParks(query, maxResults=10) {
+function getNationalParks(query, limit =10) {
   const params = {
     api_key: apiKey,
     q: query,
-    maxResults,
+    limit,
     type: 'text'
   };
   const queryString = formatQueryParams(params)
