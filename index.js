@@ -2,7 +2,7 @@
 
 // put your own value below!
 const apiKey = '3h2nMchq5TfoOWlGZVrt3mDJmF9mCAA7w3WTInTB';
-const searchURL = 'https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=3h2nMchq5TfoOWlGZVrt3mDJmF9mCAA7w3WTInTB';
+const searchURL = 'https://developer.nps.gov/api/v1/parks';
 
 
 function formatQueryParams(params) {
@@ -30,7 +30,7 @@ function displayResults(responseJson) {
 
 function getNationalParks(query, maxResults=10) {
   const params = {
-    key: apiKey,
+    api_key: apiKey,
     q: query,
     maxResults,
     type: 'text'
